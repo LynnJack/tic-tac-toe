@@ -1,0 +1,47 @@
+body {
+	color: white;
+}
+
+#container {
+	background-color: purple;
+	width: 456px;
+	height: 456px;
+	margin: 0 auto;
+}
+
+
+
+.cell {
+		display: inline-block;
+		float: left;
+		width: 150px;
+		height: 150px;
+}
+
+
+.rightLine {border-right: 3px solid orange;}
+.bottomLine {border-bottom: 3px solid orange;}
+
+
+.potatoe {
+	clear: both;
+}
+
+
+
+
+h1 { 
+	text-align: center;
+	color: #ff88ff;
+}
+
+h2 {
+	color: yellow;
+}
+
+.planet { 
+	border: 3px dotted lightgrey;
+	width: 600px;
+	padding: 10px 45px;
+	margin: 15px auto;
+}
