@@ -5,13 +5,13 @@
 		<meta charset="utf-8">
 
 		<!-- AngularJS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
 		<!-- Firebase -->
 		<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
 		<!-- AngularFire -->
 		<script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
 
-		<title>First Project</title>
+		<title>Who's Your Boo?</title>
 
 		<!--[if lt IE 9]>
 		<script src="js/html5shiv.js"></script>
@@ -19,23 +19,21 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/style.css">
-		<script src="js/angular.js"></script>
-		<script src="js/app.js"></script>
 
 		<!--Ask what this is from template-->
-        <script src="js/main.js" async></script>
+		<script type="text/javascript" src="js/main.js"></script>
+        <!-- <script src="js/main.js" async></script> -->
 	</head>
 
 	<body ng-controller="tttController">
+			<h1>Who's Your Boo?</h1>
+			<h2>Tic Tac Boo</h1>
 
 		<div id="container">
-
-
-    	<div ng-repeat="cell in cells track by $index" ng-class="{cell:true, potatoe: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5) }" ng-click="cell='X';">
-        {{ cell }}
+<!--change 'cells' for 'squares'-->
+    		<div ng-repeat="s in squares track by $index" ng-class="{boo: true, cell:true, potatoe: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5)}" ng-click="s='X'">
+        	{{ s }} 
+    		</div>
     	</div>
-
-<!--ng-click="image? "-->
-<!-- <div ng-click="image" or onclick=
 	</body>
 </html>
