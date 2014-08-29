@@ -27,11 +27,13 @@
 
 	<body ng-controller="tttController">
 			<h1>Who's Your Boo?</h1>
+			<!--added button by Dan-->
+			<button ng-click="storeDetails.gameInProgress=false">End Game</button>
 			<h2>Tic Tac Boo</h1>
-
+		{{squares}}
 		<div id="container">
 <!--change 'cells' for 'squares'-->
-    		<div ng-repeat="s in squares track by $index" ng-class="{boo: true, cell:true, potatoe: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5)}" ng-click="s='X'">
+    		<div ng-repeat="s in squares track by $index" ng-class="{cell:true, potatoe: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
         	{{ s }} 
     		</div>
     	</div>

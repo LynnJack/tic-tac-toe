@@ -4,15 +4,21 @@ body {
 }
 
 #container {
-	background-color: pink;
+	background-color: #FDE0C7;
 	width: 470px;
 	height: 470px;
-	/*changed from 0 to 20px*/
-	margin: 60px auto 20px auto;
+	/*chgd fr 60,from 0 to 20px*/
+	margin: 20px auto 20px auto;
 }
 
 .boo {
 	background: url("../images/boo.jpg");
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.buddy {
+	background: url("../images/buddy.jpg");
 	background-size: cover;
 	background-position: 50% 50%;
 }
