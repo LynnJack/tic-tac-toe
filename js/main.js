@@ -7,7 +7,30 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 	//pass the firebase connection/object to angularfire
 	var sync = $firebase(ref); // enables the firebase binding
 
-	
+	var firebase = sync.$asObject();
+	firebase.$bindTo($scope, 'db').then(function(){
+		$scope.db = newGame;
+	})
+
+ 
+	var newGame = {
+ 		squares: ["","","","","","","","",""],
+ 		players: ["playerOne", "playerTwo"]
+	};
+
+	//   .then(function() {
+	// if (!$sync.gameInProgress) {
+	//  	  $scope.sync = initialDB;
+	//   $scope.sync.squares = $scope.sync.squares || new Array();
+ // 	  $scope.sync.squares.push("new string");
+ // 	}
+ // });
+
+// 	  // Example of dynamically adding to a possibly empty cells array
+// 	  $scope.storeDetails.cells = $scope.storeDetails.cells || new Array();
+// 	  $scope.storeDetails.cells.push("new string");
+
+
 	// //firebase push 
 	// squares: [],
 	// player: true,
@@ -31,9 +54,9 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 // var storeDetails = $firebase(firebase);
 // var storeDetailsObject = storeDetails.$asObject();
 
-// storeDetailsObject.$bindTo($scope, 'storeDetails')
-// 	.then(function() {
+// storeDetailsObject.$bindTo($scope, 'storeDetails') 
 // 	  //GUARANTEED that $scope.storeDetails exists!
+ //.then(function() {
 // 	if (!$scope.storeDetails.gameInProgress) {
 // 	  $scope.storeDetails = initialDB;
 
@@ -77,7 +100,6 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 			alert("This square is already taken");
 		}
 	}
-
 	//function to check winning conditions after each player selected and to switch players
 	function winConditions() {
 		if (($scope.squares[0] == 1 && $scope.squares[1] == 1 && $scope.squares[2] == 1) || 
@@ -99,18 +121,27 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 			($scope.squares[0] == -1 && $scope.squares[4] == -1 && $scope.squares[8] == -1) ||
 			($scope.squares[2] == -1 && $scope.squares[4] == -1 && $scope.squares[6] == -1)) {
 				alert("Player 2 Wins");
-		} else if (($scope.squares[0] == 1 || -1) && ($scope.squares[1] == 1 || -1) && 
-			($scope.squares[2] == 1 || -1) && ($scope.squares[3] == 1 || -1) && 
-			($scope.squares[4] == 1 || -1) && ($scope.squares[5] == 1 || -1) &&
-			($scope.squares[6] == 1 || -1) && ($scope.squares[7] == 1 || -1) &&
-			($scope.squares[8] == 1 || -1)) {
-				console.log("It's a tie!");
-		}
+		} 
+		 /*else if (($scope.squares[0] == 1 || -1) && ($scope.squares[1] == 1 || -1) && 
+		 	($scope.squares[2] == 1 || -1) && ($scope.squares[3] == 1 ||        -1) && 
+		 	($scope.squares[4] == 1 || -1) && ($scope.squares[5] == 1 || -1) &&
+		 	($scope.squares[6] == 1 || -1) && ($scope.squares[7] == 1 || -1) &&
+		 	($scope.squares[8] == 1 || -1)) {
+		 		console.log("It's a tie!");
+		 } */
+
 			if (playerOne == true) {
 				playerOne = false; 
 			}
 			else {
 				playerOne = true;// =assigns; ==evaluates
-			}
+				}
 	}
 }]);
+//this is looping through all squares each time
+// for (var i = 0; i = $scope.squares.length; i++);
+// 	if ($scope.squares[i] !== "") {
+// 		console.log(Tie!)
+//  }
+//  Tie psudocode - if ($scope.squares[i] !== ""){ console.log(Boo & Buddy Wins!)};
+//when someone wins, then game over.  for ($scop  )

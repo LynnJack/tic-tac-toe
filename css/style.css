@@ -46,12 +46,16 @@ body {
 h1 { 
 	text-align: center;
 	color: grey;
+	font-size: 50px;
 	/*color: #ff88ff;*/
+	margin: 50px auto 5px auto;
 }
 
 h2 {
 	text-align: center;
 	color: grey;
+	font-size: 40px;
+	margin: 0 auto 5px auto;
 }
 
 .planet { 

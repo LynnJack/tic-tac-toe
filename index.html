@@ -9,7 +9,7 @@
 		<!-- Firebase -->
 		<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
 		<!-- AngularFire -->
-		<script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
 
 		<title>Who's Your Boo?</title>
 
@@ -29,12 +29,10 @@
 			<h1>Who's Your Boo?</h1>
 			<!--added button by Dan-->
 			<button ng-click="storeDetails.gameInProgress=false">End Game</button>
-			<h2>Tic Tac Boo</h1>
-		{{squares}}
+			<h2>Tic Tac Boo</h2>
 		<div id="container">
 <!--change 'cells' for 'squares'-->
     		<div ng-repeat="s in squares track by $index" ng-class="{cell:true, potatoe: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
-        	{{ s }} 
     		</div>
     	</div>
 	</body>
