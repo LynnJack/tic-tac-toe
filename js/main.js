@@ -57,8 +57,7 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 		($scope.squares[2] == 1 && $scope.squares[5] == 1 && $scope.squares[8] == 1) ||
 		($scope.squares[0] == 1 && $scope.squares[4] == 1 && $scope.squares[8] == 1) ||
 		($scope.squares[2] == 1 && $scope.squares[4] == 1 && $scope.squares[6] == 1)) {
-			alert("Player 1 Wins!");
-			//$scope.boowins==true;
+			$scope.boowins=true;
 		} else if (
 			($scope.squares[0] == -1 && $scope.squares[1] == -1 && $scope.squares[2] == -1) || 
 			($scope.squares[3] == -1 && $scope.squares[4] == -1 && $scope.squares[5] == -1) ||
@@ -68,15 +67,15 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 			($scope.squares[2] == -1 && $scope.squares[5] == -1 && $scope.squares[8] == -1) ||
 			($scope.squares[0] == -1 && $scope.squares[4] == -1 && $scope.squares[8] == -1) ||
 			($scope.squares[2] == -1 && $scope.squares[4] == -1 && $scope.squares[6] == -1)) {
-				alert("Player 2 Wins");
-		//add reset game
-		} 
-		 /*else if (($scope.squares[0] == 1 || == -1) && ($scope.squares[1] == 1 || == -1) && 
-		 	($scope.squares[2] == 1 || == -1) && ($scope.squares[3] == 1 || == -1) && 
-		 	($scope.squares[4] == 1 || == -1) && ($scope.squares[5] == 1 || == -1) &&
-		 	($scope.squares[6] == 1 || == -1) && ($scope.squares[7] == 1 || == -1) &&
-		 	($scope.squares[8] == 1 || == -1)) {
-		 		console.log("It's a tie!");/*
+				$scope.buddywins=true;
+		// add reset game
+		} else if (
+			($scope.squares[0] == 1 || $scope.squares[0] == -1) && ($scope.squares[1] == 1 || $scope.squares[1] == -1) && 
+		 	($scope.squares[2] == 1 || $scope.squares[2] == -1) && ($scope.squares[3] == 1 || $scope.squares[3] == -1) && 
+		 	($scope.squares[4] == 1 || $scope.squares[4] == -1) && ($scope.squares[5] == 1 || $scope.squares[5] == -1) &&
+		 	($scope.squares[6] == 1 || $scope.squares[6] == -1) && ($scope.squares[7] == 1 || $scope.squares[7] == -1) &&
+		 	($scope.squares[8] == 1 || $scope.squares[8] == -1)) {
+		 		$scope.itsatie=true;
 		 }
 		/*for (var i = 0; i = $scope.squares.length; i++);
  			if ($scope.squares !== [""]) {
