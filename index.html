@@ -52,7 +52,7 @@
 		
 		<div id="container">
 <!--change 'cells' for 'squares'-->
-    		<div ng-repeat="s in squares track by $index" ng-class="{cell:true, potato: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
+    		<div ng-repeat="s in db.squares track by $index" ng-class="{cell:true, potato: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
     		</div>
     	</div>
 	</body>
