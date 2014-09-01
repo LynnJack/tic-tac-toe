@@ -1,7 +1,7 @@
 var tictactoeApp = angular.module('tictactoeApp', ["firebase"]);
 tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scope, $firebase) {
 	// this is creating new Firebase connection using the Firebase object
-	var ref = new Firebase("https://turnip.firebaseio.com/dude");
+	var ref = new Firebase("https://tictacboo.firebaseio.com/");
 	//pass the firebase connection/object to angularfire
 	var sync = $firebase(ref); // enables the firebase binding
 	var firebase = sync.$asObject();
