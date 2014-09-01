@@ -10,8 +10,9 @@
 		<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
 		<!-- AngularFire -->
 		<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,900' rel='stylesheet' type='text/css'>
 
-		<title>Who's Your Boo?</title>
+		<title>Tic Tac Boo</title>
 
 		<!--[if lt IE 9]>
 		<script src="js/html5shiv.js"></script>
@@ -26,11 +27,18 @@
 	</head>
 
 	<body ng-controller="tttController">
-			<h1>Who's Your Boo?</h1>
-			<!--added button by Dan-->
-			<button ng-click="storeDetails.gameInProgress=false">End Game</button>
+			<h1>Tic Tac Boo</h1>
 			
-			<h2>Tic Tac Boo</h2>
+
+
+
+      		<button ng-click="db.gameInProgress=false">End Game</button>
+    </div>
+
+
+
+
+			<h2>Boo and Buddy</h2>
 
 			<div ng-show ="boowins" class="boowins">
 			<p>Player One Wins</p>
