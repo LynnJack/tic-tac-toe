@@ -1,19 +1,22 @@
 var tictactoeApp = angular.module('tictactoeApp', ["firebase"]);
 tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scope, $firebase) {
 	// this is creating new Firebase connection using the Firebase object
-	var ref = new Firebase("https://tictacboo.firebaseio.com/");
+	var ref = new Firebase("https://turnip.firebaseio.com/dude");
 	//pass the firebase connection/object to angularfire
 	var sync = $firebase(ref); // enables the firebase binding
 	var firebase = sync.$asObject();
-	firebase.$bindTo($scope, 'db').then(function(){
-		$scope.db = newGame;
-	})
 
 	var newGame = {
  		squares: ["","","","","","","","",""],
  		players: ["playerOne", "playerTwo"],
- 		gameInProgress: "true",
+ 		gameInProgress: true,
+		// declared a variable in order to switch from Player 1 to Player 2
+ 		playerOne: true
 	};
+
+	firebase.$bindTo($scope, 'db').then(function(){
+		$scope.db = newGame;
+	});
 
 	// if (!$scope.db.gameInProgress) {
 	//  	  $scope.db = newGame;
@@ -28,17 +31,14 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 // 	}
 // });            
 
-	$scope.squares = ["","","","","","","","",""];
-	// declared a variable in order to switch from Player 1 to Player 2
-	var playerOne = true;
 	//function to identify which squares the player (1 or 2) selected
 	$scope.placeMarker = function(squaresindex) {
-		if ($scope.squares[squaresindex] == "") {
-			if (playerOne == true) {
-				$scope.squares[squaresindex] = 1;
+		if ($scope.db.squares[squaresindex] == "") {
+			if ($scope.db.playerOne == true) {
+				$scope.db.squares[squaresindex] = 1;
 				winConditions();
 			} else {
-				$scope.squares[squaresindex] = -1;
+				$scope.db.squares[squaresindex] = -1;
 				winConditions();
 			}
 		} else {
@@ -49,44 +49,44 @@ tictactoeApp.controller('tttController', ["$scope", "$firebase", function ($scop
 
 
 	function winConditions() {
-		if (($scope.squares[0] == 1 && $scope.squares[1] == 1 && $scope.squares[2] == 1) || 
-		($scope.squares[3] == 1 && $scope.squares[4] == 1 && $scope.squares[5] == 1) ||
-		($scope.squares[6] == 1 && $scope.squares[7] == 1 && $scope.squares[8] == 1) ||
-		($scope.squares[0] == 1 && $scope.squares[3] == 1 && $scope.squares[6] == 1) ||
-		($scope.squares[1] == 1 && $scope.squares[4] == 1 && $scope.squares[7] == 1) ||
-		($scope.squares[2] == 1 && $scope.squares[5] == 1 && $scope.squares[8] == 1) ||
-		($scope.squares[0] == 1 && $scope.squares[4] == 1 && $scope.squares[8] == 1) ||
-		($scope.squares[2] == 1 && $scope.squares[4] == 1 && $scope.squares[6] == 1)) {
+		if (($scope.db.squares[0] == 1 && $scope.db.squares[1] == 1 && $scope.db.squares[2] == 1) || 
+		($scope.db.squares[3] == 1 && $scope.db.squares[4] == 1 && $scope.db.squares[5] == 1) ||
+		($scope.db.squares[6] == 1 && $scope.db.squares[7] == 1 && $scope.db.squares[8] == 1) ||
+		($scope.db.squares[0] == 1 && $scope.db.squares[3] == 1 && $scope.db.squares[6] == 1) ||
+		($scope.db.squares[1] == 1 && $scope.db.squares[4] == 1 && $scope.db.squares[7] == 1) ||
+		($scope.db.squares[2] == 1 && $scope.db.squares[5] == 1 && $scope.db.squares[8] == 1) ||
+		($scope.db.squares[0] == 1 && $scope.db.squares[4] == 1 && $scope.db.squares[8] == 1) ||
+		($scope.db.squares[2] == 1 && $scope.db.squares[4] == 1 && $scope.db.squares[6] == 1)) {
 			$scope.boowins=true;
 		} else if (
-			($scope.squares[0] == -1 && $scope.squares[1] == -1 && $scope.squares[2] == -1) || 
-			($scope.squares[3] == -1 && $scope.squares[4] == -1 && $scope.squares[5] == -1) ||
-			($scope.squares[6] == -1 && $scope.squares[7] == -1 && $scope.squares[8] == -1) ||
-			($scope.squares[0] == -1 && $scope.squares[3] == -1 && $scope.squares[6] == -1) ||
-			($scope.squares[1] == -1 && $scope.squares[4] == -1 && $scope.squares[7] == -1) ||
-			($scope.squares[2] == -1 && $scope.squares[5] == -1 && $scope.squares[8] == -1) ||
-			($scope.squares[0] == -1 && $scope.squares[4] == -1 && $scope.squares[8] == -1) ||
-			($scope.squares[2] == -1 && $scope.squares[4] == -1 && $scope.squares[6] == -1)) {
+			($scope.db.squares[0] == -1 && $scope.db.squares[1] == -1 && $scope.db.squares[2] == -1) || 
+			($scope.db.squares[3] == -1 && $scope.db.squares[4] == -1 && $scope.db.squares[5] == -1) ||
+			($scope.db.squares[6] == -1 && $scope.db.squares[7] == -1 && $scope.db.squares[8] == -1) ||
+			($scope.db.squares[0] == -1 && $scope.db.squares[3] == -1 && $scope.db.squares[6] == -1) ||
+			($scope.db.squares[1] == -1 && $scope.db.squares[4] == -1 && $scope.db.squares[7] == -1) ||
+			($scope.db.squares[2] == -1 && $scope.db.squares[5] == -1 && $scope.db.squares[8] == -1) ||
+			($scope.db.squares[0] == -1 && $scope.db.squares[4] == -1 && $scope.db.squares[8] == -1) ||
+			($scope.db.squares[2] == -1 && $scope.db.squares[4] == -1 && $scope.db.squares[6] == -1)) {
 				$scope.buddywins=true;
 		// add reset game
 		} else if (
-			($scope.squares[0] == 1 || $scope.squares[0] == -1) && ($scope.squares[1] == 1 || $scope.squares[1] == -1) && 
-		 	($scope.squares[2] == 1 || $scope.squares[2] == -1) && ($scope.squares[3] == 1 || $scope.squares[3] == -1) && 
-		 	($scope.squares[4] == 1 || $scope.squares[4] == -1) && ($scope.squares[5] == 1 || $scope.squares[5] == -1) &&
-		 	($scope.squares[6] == 1 || $scope.squares[6] == -1) && ($scope.squares[7] == 1 || $scope.squares[7] == -1) &&
-		 	($scope.squares[8] == 1 || $scope.squares[8] == -1)) {
+			($scope.db.squares[0] == 1 || $scope.db.squares[0] == -1) && ($scope.db.squares[1] == 1 || $scope.db.squares[1] == -1) && 
+		 	($scope.db.squares[2] == 1 || $scope.db.squares[2] == -1) && ($scope.db.squares[3] == 1 || $scope.db.squares[3] == -1) && 
+		 	($scope.db.squares[4] == 1 || $scope.db.squares[4] == -1) && ($scope.db.squares[5] == 1 || $scope.db.squares[5] == -1) &&
+		 	($scope.db.squares[6] == 1 || $scope.db.squares[6] == -1) && ($scope.db.squares[7] == 1 || $scope.db.squares[7] == -1) &&
+		 	($scope.db.squares[8] == 1 || $scope.db.squares[8] == -1)) {
 		 		$scope.itsatie=true;
 		 }
-		/*for (var i = 0; i = $scope.squares.length; i++);
+		/*for (var i = 0; i = $scope.db.squares.length; i++);
  			if ($scope.squares !== [""]) {
  				console.log("Boo & Buddy Win!");
  			}*/
 
-			if (playerOne == true) {
-				playerOne = false; 
+			if ($scope.db.playerOne == true) {
+				$scope.db.playerOne = false; 
 			}
 			else {
-				playerOne = true;// =assigns; ==evaluates
-				}
+				$scope.db.playerOne = true;// =assigns; ==evaluates
+			}
 	}
 }]);
