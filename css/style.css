@@ -1,7 +1,6 @@
 body {
 	color: #401701;
 	background-color: #FDE0C7;
-	font-family: 'Alegreya Sans', sans-serif;
 }
 
 #container {
@@ -47,7 +46,7 @@ body {
 	margin-left: 100px;
 	font-size: 30px;
 }
-
+/*cell to */
 .cell {
 		display: inline-block;
 		float: left;
@@ -82,8 +81,8 @@ h2 {
 	margin: 0 auto 5px auto;
 }
 
-.planet { 
+/*.planet { 
 	border: 3px dotted lightgrey;
 	width: 600px;
 	padding: 10px 45px;
-	margin: 15px auto;
+	margin: 15px auto;*/

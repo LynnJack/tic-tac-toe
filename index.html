@@ -9,8 +9,8 @@
 		<!-- Firebase -->
 		<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
 		<!-- AngularFire -->
-		<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,700,900' rel='stylesheet' type='text/css'>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+		
 
 		<title>Tic Tac Boo</title>
 
@@ -27,32 +27,59 @@
 	</head>
 
 	<body ng-controller="tttController">
-			<h1>Tic Tac Boo</h1>
+		<h1>Tic Tac Boo</h1>
 			
+		<!-- Call function to connect & sync to Firebase -->
+		<div ng-hide="dbConnected">
+			<p>Enter your name: <input type="text" ng-model="db.playerName"></p>
+			<button ng-click="connectDB()">Connect To Server</button>
+		</div>
 
+		<!-- Shows status while connecting to Firebase -->
+		<div ng-show="dbConnecting">
+			<p>Connecting to database ...</p>
+		</div>
 
+		<!-- ends and resets game -->
+		<!-- <button ng-click="db.gameInProgress=false">End Game</button> -->
+		<div ng-show="dbConnected">
+			<button ng-click="endGame()">End Game</button>
+			<div ng-hide="db.gameInProgress">
+			</div>
 
-      		<button ng-click="db.gameInProgress=false">End Game</button>
-    </div>
+			<hr>
+			<p>YOUR PLAYER NUMBER IS: {{ db.playerNumber }}</p>
 
+			<p></p>
 
+			<p>Your Player Name: <input type="text" ng-model="db.players[playerNumber].name"></p>
+			<p>Other Players:
+				<ul>
+					<!-- will show other player in game -->
+					<li ng-repeat="p in db.players track by $index">{{ p.name }}</li>
+				</ul>
+			</p>
+
+			<hr>
+
+			<p></p>
+		</div>
 
 
 			<h2>Boo and Buddy</h2>
 
 			<div ng-show ="boowins" class="boowins">
-			<p>Player One Wins</p>
+				<p>Player One Wins</p>
 			</div>
 			<div ng-show ="buddywins" class="buddywins">
-			<p>Player Two Wins</p>
+				<p>Player Two Wins</p>
 			</div>
 			<div ng-show ="itsatie" class="itsatie">
-			<p>It's a Tie!!</p>
+				<p>It's a Tie!!</p>
 			</div>
 		
 		<div id="container">
-<!--change 'cells' for 'squares'-->
-    		<div ng-repeat="s in squares track by $index" ng-class="{cell:true, potato: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
+    		<div ng-repeat="s in db.squares track by $index" ng-class="{cell:true, potato: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
     		</div>
     	</div>
 	</body>
