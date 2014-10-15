@@ -41,7 +41,11 @@ app.controller('tttController', ["$scope", "$http", "$firebase", function ($scop
 	// });
 
 	// this is creating new Firebase connection using the Firebase object
+<<<<<<< HEAD
 	var ref = new Firebase("https://turnip.firebaseio.com");
+=======
+	var ref = new Firebase("https://tictacboo.firebaseio.com/");
+>>>>>>> ddac10c7bd87b5dac3053cd71da5bfc5ecfbc863
 	//pass the firebase connection/object to angularfire
 	var sync = $firebase(ref); // enables the firebase binding
 	var firebase = sync.$asObject();
