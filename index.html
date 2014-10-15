@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="tictactoeApp">
+<html x-ng-app="TictactoeApp">
 	<head>
 		<meta charset="utf-8">
 
@@ -25,8 +25,25 @@
         <!-- <script src="js/main.js" async></script> -->
 	</head>
 
-	<body ng-controller="tttController">
+	<body x-ng-controller="tttController"
+	 x-ng-init="stuff=[{name:'dude'}]">
+
+	 	<ul>
+	 		<li x-ng-repeat="i in issues">{{i.title}}</li>
+	 	</ul>
+
 			<h1>Who's Your Boo?</h1>
+
+    <select ng-model="rateMe">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <div x-my-directive="" x-rating-value="rateMe"></div>
+
 			<!--added button by Dan-->
 			<button ng-click="storeDetails.gameInProgress=false">End Game</button>
 			
@@ -46,6 +63,14 @@
 <!--change 'cells' for 'squares'-->
     		<div ng-repeat="s in db.squares track by $index" ng-class="{cell:true, potato: ($index % 3 == 0), rightLine: ($index % 3 != 2), bottomLine: ($index <= 5), boo: s==1, buddy: s==-1}" ng-click="placeMarker($index)">
     		</div>
-    	</div>
+    </div>
+
+    <input type="text" data-ng-model="newName" placeholder="Your fur-kin's name" /><br />
+    <input type="button" x-ng-click="stuff.push({name:newName})" /><br />
+
+
+    <ul>
+    	<li x-ng-repeat="x in stuff">{{x.name}}</li>
+    </ul>
 	</body>
 </html>
